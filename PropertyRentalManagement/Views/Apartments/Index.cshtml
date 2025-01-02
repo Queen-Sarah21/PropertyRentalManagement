@@ -1,0 +1,70 @@
+﻿@model IEnumerable<PropertyRentalManagement.Models.Apartment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Apartments</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Building.BuildingCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Building.BuildingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApartmentNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Building.ManagerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Building.Manager.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rooms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bathrooms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Building.BuildingCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Building.BuildingName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApartmentNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Building.ManagerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Building.Manager.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rooms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bathrooms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "ApartmentDetails", "Tenants", new { id = item.ApartmentNum }, new { @class = "btn btn-info btn-sm" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,153 @@
+﻿@model IEnumerable<PropertyRentalManagement.Models.Tenant>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center my-4">Tenant List</h2>
+
+@using (Html.BeginForm("Search", "Tenants", FormMethod.Get))
+{
+    <div class="search-form">
+        <input type="text" name="searchString" placeholder="Search by ID, FirstName, or LastName" value="@Request["searchString"]" class="form-control" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+}
+
+<table class="table table-striped mt-4">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.Phone)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TenantId }, new { @class = "btn btn-warning btn-sm" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.TenantId }, new { @class = "btn btn-info btn-sm" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TenantId }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    h2 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #333;
+        margin-top: 20px;
+    }
+
+    .search-form {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+        .search-form input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+
+        .search-form input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+            .search-form input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+
+    .table {
+        width: 80%;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+        }
+
+    .table-striped tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+
+    .table th {
+        background-color: #343a40;
+        color: white;
+    }
+
+    .table td {
+        border-top: 1px solid #ddd;
+    }
+
+        .table td a {
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+    .btn {
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .btn-sm {
+        padding: 5px 12px;
+        font-size: 14px;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: white;
+    }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+</style>

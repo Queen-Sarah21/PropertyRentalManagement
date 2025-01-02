@@ -1,0 +1,155 @@
+﻿@model PropertyRentalManagement.Models.Manager
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 class="text-center my-4">Create Manager</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Manager</h4>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.ManagerId, "ManagerId", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.ManagerId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ManagerId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-offset-3 col-md-9">
+                <input type="submit" value="Create" class="btn btn-success btn-lg" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="text-center mt-3">
+    @Html.ActionLink("Back to Manager List", "Index", "Managers", null, new { @class = "btn btn-secondary btn-lg" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<style>
+    h2 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #333;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .form-horizontal {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            color: #495057;
+            font-size: 14px;
+        }
+
+    .form-control {
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ced4da;
+        width: 100%;
+    }
+
+    .text-danger {
+        color: red;
+        font-size: 12px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: white;
+        font-size: 16px;
+        padding: 10px 25px;
+        border-radius: 5px;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        font-size: 16px;
+        padding: 10px 25px;
+        border-radius: 5px;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    .row {
+        margin-bottom: 15px;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    body {
+        padding: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+</style>

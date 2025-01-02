@@ -1,0 +1,103 @@
+﻿@model PropertyRentalManagement.Models.Manager
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        h3 {
+            color: red;
+            font-weight: bold;
+        }
+
+        .form-actions input[type="submit"], .form-actions a {
+            padding: 10px 20px;
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .form-actions input[type="submit"] {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+
+            .form-actions input[type="submit"]:hover {
+                background-color: #c82333;
+            }
+
+        .form-actions a {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+            .form-actions a:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+
+<body>
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Manager</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-primary" })
+            </div>
+        }
+    </div>
+</body>
+</html>

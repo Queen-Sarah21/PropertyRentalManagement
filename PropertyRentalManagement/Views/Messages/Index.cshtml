@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PropertyRentalManagement.Models.Message>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MessageSubject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MessageBody)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MessageDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User1.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MessageSubject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MessageBody)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MessageDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User1.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MessageId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MessageId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MessageId })
+            </td>
+        </tr>
+    }
+
+</table>

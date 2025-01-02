@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PropertyRentalManagement.Models.Payment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Leas.LeaseId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tenant.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Leas.LeaseId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tenant.FirstName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PaymentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PaymentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PaymentId })
+            </td>
+        </tr>
+    }
+
+</table>

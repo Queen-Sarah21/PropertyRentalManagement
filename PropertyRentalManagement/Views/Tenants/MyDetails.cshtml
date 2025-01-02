@@ -1,0 +1,24 @@
+﻿@model PropertyRentalManagement.Models.Tenant
+
+<h2>Tenant's Details</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th> ID </th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.TenantId</td>
+            <td>@Model.FirstName</td>
+            <td>@Model.LastName</td>
+            <td>@Model.Email</td>
+            <td>@Model.Phone</td>
+        </tr>
+    </tbody>
+</table>

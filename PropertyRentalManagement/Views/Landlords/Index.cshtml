@@ -1,0 +1,32 @@
+﻿@model IEnumerable<PropertyRentalManagement.Models.Landlord>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Landlord's Details</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Email</td>
+                <td>@item.Phone</td>
+                <td>@item.User.Password</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

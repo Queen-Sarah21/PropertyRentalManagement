@@ -1,0 +1,76 @@
+﻿@model IEnumerable<PropertyRentalManagement.Models.Tenant>
+
+@{
+    ViewBag.Title = "Search Tenants";
+}
+
+<h2>Search Tenants</h2>
+
+@using (Html.BeginForm("Search", "Tenants", FormMethod.Get))
+{
+    <p>
+        <input type="text" name="searchString" placeholder="Search by ID, FirstName, or LastName" value="@Request["searchString"]" />
+        <input type="submit" value="Search" />
+    </p>
+}
+
+@if (Request["searchString"] != null && !string.IsNullOrEmpty(Request["searchString"]))
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th></th>
+        </tr>
+
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.TenantId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.TenantId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.TenantId })
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" style="text-align:center;">No results found.</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Please enter a search term to find tenants.</p>
+}
+
+<p>
+    @Html.ActionLink("Back to Tenant List", "Index", "Tenants", null, new { @class = "btn btn-secondary" })
+</p>

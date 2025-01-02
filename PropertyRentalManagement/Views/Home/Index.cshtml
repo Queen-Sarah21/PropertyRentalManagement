@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    body {
+        background-color: #f4f4f4;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    header {
+        background-color: #333;
+        padding: 10px;
+        text-align: center;
+    }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1em;
+        }
+
+            header a:hover {
+                text-decoration: underline;
+            }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        color: black;
+    }
+
+    .section-container {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 700px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .lead {
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+
+    .image-container {
+        text-align: center;
+    }
+
+        .image-container img {
+            width: 50%;
+            max-width: 400px;
+            margin-top: 10px;
+        }
+
+    .btn {
+        font-size: 1em;
+        padding: 8px 16px;
+        margin-top: 10px;
+        text-decoration: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<main>
+    <div class="section-container">
+        <h1>Property Rental Management</h1>
+        <p class="lead">
+            The Property Rental Management System (PRMS) is a web-based application designed
+            to streamline the management of rental properties. The system allows property owners, managers,
+            and tenants to efficiently handle property listings, rental agreements, maintenance requests, and payments.
+        </p>
+    </div>
+
+    <div class="image-container">
+        <img src="/Content/images/rent.jpeg" alt="Property Image">
+    </div>
+</main>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fed0bb3abc504fb681a6ff84414940ed" Name="Diagram1">
+        <EntityTypeShape EntityType="Property_Rental_DBModel.Apartment" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_DBModel.Appointment" Width="1.5" PointX="9.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_DBModel.Building" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_DBModel.Landlord" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_DBModel.Leas" Width="1.5" PointX="12.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_DBModel.Manager" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_DBModel.Message" Width="1.5" PointX="6" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_DBModel.Payment" Width="1.5" PointX="15" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_DBModel.Schedule" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_DBModel.Status" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_DBModel.Tenant" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Property_Rental_DBModel.User" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Apartment__Build__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Apartment__Statu__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Appointme__Apart__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Leases__Apartmen__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Appointme__Manag__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Appointme__Sched__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Appointme__Statu__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Appointme__Tenan__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Buildings__Landl__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Buildings__Manag__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Landlords__Landl__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Leases__StatusId__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Leases__TenantId__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Payments__LeaseI__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Managers__Manage__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Schedules__Manag__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Messages__Receiv__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Messages__Sender__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Messages__Status__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Payments__Status__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Payments__Tenant__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="Property_Rental_DBModel.FK__Tenants__TenantI__5165187F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

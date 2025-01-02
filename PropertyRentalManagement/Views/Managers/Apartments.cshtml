@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PropertyRentalManagement.Models.Apartment>
+
+@{
+    ViewData["Title"] = "My Apartments";
+}
+
+<h2 class="text-center my-4">My Apartments</h2>
+
+<p>
+    @Html.ActionLink("Create New Apartment", "Create", "Apartments", new { managerId = User.Identity.Name }, null)
+</p>
+
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning text-center">
+        No apartments found for your buildings.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Apartment Number</th>
+                    <th>Building Code</th>
+                    <th>Rooms</th>
+                    <th>Bathrooms</th>
+                    <th>Description</th>
+                    <th>Rent</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var apartment in Model)
+                {
+                    <tr>
+                        <td>@apartment.ApartmentNum</td>
+                        <td>@apartment.BuildingCode</td>
+                        <td>@apartment.Rooms</td>
+                        <td>@apartment.Bathrooms</td>
+                        <td>@apartment.Description</td>
+                        <td>@String.Format("{0:C}", apartment.Rent)</td>
+                        <td>@apartment.Status.Description</td>
+                        <td>
+
+                            @Html.ActionLink("Edit", "Edit", "Apartments", new { id = apartment.ApartmentNum }, new { @class = "btn btn-warning btn-sm" })
+                            @Html.ActionLink("Details", "Details", "Apartments", new { id = apartment.ApartmentNum }, new { @class = "btn btn-info btn-sm" })
+                            @Html.ActionLink("Delete", "Delete", "Apartments", new { id = apartment.ApartmentNum }, new { @class = "btn btn-danger btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

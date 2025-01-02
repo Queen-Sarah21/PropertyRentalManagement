@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PropertyRentalManagement.Models.Appointment>
+
+@{
+    ViewBag.Title = "Appointments";
+}
+
+<h2>Your Appointments</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tenant</th>
+            <th>Building Code#</th>
+            <th>Apartment#</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.Tenant.FirstName @appointment.Tenant.LastName</td>
+                <td>@appointment.Apartment.BuildingCode</td>
+                <td>@appointment.Apartment.ApartmentNum</td>
+                <td>@appointment.Status.Description</td>
+                <td>
+                    @if (appointment.Status.Description != "Confirmed")
+                    {
+                        @Html.ActionLink("Confirm", "AppointmentDetails", new { id = appointment.AppointmentId, status = "Confirm" }, new { @class = "btn btn-success" })
+                    }
+
+                    @if (appointment.Status.Description != "Canceled")
+                    {
+                        @Html.ActionLink("Cancel", "AppointmentDetails", new { id = appointment.AppointmentId, status = "Cancel" }, new { @class = "btn btn-danger" })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

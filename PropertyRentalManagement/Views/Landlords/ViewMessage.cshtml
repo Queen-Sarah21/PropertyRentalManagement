@@ -1,0 +1,21 @@
+﻿@model PropertyRentalManagement.Models.Message
+
+@{
+    ViewBag.Title = "Message Details";
+}
+
+<h2>Message Details</h2>
+
+<div class="card">
+    <div class="card-header">
+        <h4>@Model.MessageSubject</h4>
+    </div>
+    <div class="card-body">
+        <p><strong>From:</strong> Manager (@Model.SenderId)</p>
+        <p><strong>Date Received:</strong> @Model.MessageDate.ToString("yyyy-MM-dd HH:mm")</p>
+        <p><strong>Message:</strong></p>
+        <p>@Model.MessageBody</p>
+    </div>
+</div>
+
+<a href="@Url.Action("ReceiveMessages", "Landlords")" class="btn btn-secondary mt-3">Back to Messages</a>

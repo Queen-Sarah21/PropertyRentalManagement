@@ -1,0 +1,158 @@
+﻿@model IEnumerable<PropertyRentalManagement.Models.Manager>
+
+@{
+    ViewBag.Title = "Managers";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+    }
+
+    .content-container {
+        max-width: 900px;
+        margin: 10px auto;
+        padding: 15px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .search-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+        .search-container input[type="text"] {
+            width: 55%;
+            max-width: 350px;
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .search-container input[type="submit"] {
+            padding: 6px 12px;
+            margin-left: 8px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .search-container input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #343a40;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+    /* Buttons */
+    .action-buttons a {
+        padding: 4px 8px;
+        margin: 0 4px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 0.85em;
+    }
+
+    .btn-edit {
+        background-color: #ffc107;
+        color: white;
+    }
+
+    .btn-details {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .action-buttons a:hover {
+        opacity: 0.9;
+    }
+</style>
+
+<div class="content-container">
+    <h2>Manager List</h2>
+
+    <div class="search-container">
+        @using (Html.BeginForm("Search", "Managers", FormMethod.Get))
+        {
+            <input type="text" name="searchString" placeholder="Search by ID, FirstName, or LastName" value="@Request["searchString"]" />
+            <input type="submit" value="Search" />
+        }
+    </div>
+
+    <p>
+        @Html.ActionLink("Create New User", "Create", "Users", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Create New Manager", "Create", "Managers", null, new { @class = "btn btn-primary" })
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+                <th>@Html.DisplayNameFor(model => model.LastName)</th>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <th>@Html.DisplayNameFor(model => model.Phone)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                    <td class="action-buttons">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ManagerId }, new { @class = "btn-edit" })
+                        @Html.ActionLink("Details", "Details", new { id = item.ManagerId }, new { @class = "btn-details" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ManagerId }, new { @class = "btn-delete" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

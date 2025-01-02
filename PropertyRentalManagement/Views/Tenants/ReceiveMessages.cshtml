@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PropertyRentalManagement.Models.Message>
+
+@{
+    ViewBag.Title = "My Messages";
+}
+
+<h2>My Messages</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>Sender</th>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var message in Model)
+            {
+                <tr>
+                    <td>@message.SenderId</td>
+                    <td>@message.MessageSubject</td>
+                    <td>@message.MessageDate.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@(message.StatusId == 8 ? "Unread" : "Read")</td>
+                    <td>
+                        <a href="@Url.Action("ViewMessage", "Tenants", new { id = message.MessageId })" class="btn btn-info">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No messages available.</p>
+}

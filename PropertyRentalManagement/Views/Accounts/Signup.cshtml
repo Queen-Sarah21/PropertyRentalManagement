@@ -1,0 +1,81 @@
+﻿@model PropertyRentalManagement.Models.SignupViewModel
+
+@{
+    ViewBag.Title = "Tenant Signup";
+}
+
+<h2 class="text-center">Tenant Signup</h2>
+
+@using (Html.BeginForm("Signup", "Accounts", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <!-- User Information Section -->
+        <fieldset>
+            <legend class="text-primary">User Information</legend>
+
+            <div class="form-group row">
+                @Html.LabelFor(m => m.User.UserId, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.User.UserId, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                    @Html.ValidationMessageFor(m => m.User.UserId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(m => m.User.Password, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.User.Password, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                    @Html.ValidationMessageFor(m => m.User.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Tenant Information Section -->
+        <fieldset>
+            <legend class="text-primary">Tenant Information</legend>
+
+            <div class="form-group row">
+                @Html.LabelFor(m => m.Tenant.FirstName, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Tenant.FirstName, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                    @Html.ValidationMessageFor(m => m.Tenant.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(m => m.Tenant.LastName, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Tenant.LastName, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                    @Html.ValidationMessageFor(m => m.Tenant.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(m => m.Tenant.Email, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Tenant.Email, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                    @Html.ValidationMessageFor(m => m.Tenant.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(m => m.Tenant.Phone, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Tenant.Phone, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                    @Html.ValidationMessageFor(m => m.Tenant.Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Submit Button Section -->
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

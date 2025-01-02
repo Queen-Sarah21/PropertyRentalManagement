@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PropertyRentalManagement.Models.Apartment>
+
+@{
+    ViewBag.Title = "View Apartments by Status";
+}
+
+<h2>Track Apartments by Status</h2>
+
+<form method="get" action="@Url.Action("ViewApartmentsByStatus", "Managers")">
+    <div class="form-group">
+        <label for="status">Filter by Status:</label>
+        <select id="status" name="statusId" class="form-control">
+            <option value="">-- Select Status --</option>
+            @foreach (var status in ViewBag.Statuses as IEnumerable<PropertyRentalManagement.Models.Status>)
+            {
+                if (status.Description == "Available" || status.Description == "Maintenance" || status.Description == "Occupied")
+                {
+                    <option value="@status.StatusId" @(Request.QueryString["statusId"] == status.StatusId.ToString() ? "selected" : "")>
+                        @status.Description
+                    </option>
+                }
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Filter</button>
+</form>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>Apartment #</th>
+                <th>Building</th>
+                <th>Rooms</th>
+                <th>Bathrooms</th>
+                <th>Rent</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var apartment in Model)
+            {
+                <tr>
+                    <td>@apartment.ApartmentNum</td>
+                    <td>@apartment.Building.BuildingName</td>
+                    <td>@apartment.Rooms</td>
+                    <td>@apartment.Bathrooms</td>
+                    <td>@String.Format("{0:C}", apartment.Rent)</td>
+                    <td>@apartment.Status.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No apartments found for the selected status.</p>
+}

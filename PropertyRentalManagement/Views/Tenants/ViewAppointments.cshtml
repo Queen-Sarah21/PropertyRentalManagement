@@ -1,0 +1,23 @@
+﻿@model IEnumerable<PropertyRentalManagement.Models.Appointment>
+
+<h2>Your Appointments</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Apartment Number</th>
+            <th>Scheduled Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.ApartmentNum</td>
+                <td>@appointment.Schedule.ScheduleDate.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@appointment.Status.Description </td>
+            </tr>
+        }
+    </tbody>
+</table>

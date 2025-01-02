@@ -1,0 +1,154 @@
+﻿@model PropertyRentalManagement.Models.Building
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="page-title">Building Details</h2>
+
+<div class="details-container">
+    <div class="details-section">
+        <h4 class="section-title">Building Information</h4>
+        <hr class="section-divider" />
+        <dl class="styled-dl">
+            <dt>@Html.DisplayNameFor(model => model.BuildingName)</dt>
+            <dd>@Html.DisplayFor(model => model.BuildingName)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Description)</dt>
+            <dd>@Html.DisplayFor(model => model.Description)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Address)</dt>
+            <dd>@Html.DisplayFor(model => model.Address)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.City)</dt>
+            <dd>@Html.DisplayFor(model => model.City)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Province)</dt>
+            <dd>@Html.DisplayFor(model => model.Province)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.ZipCode)</dt>
+            <dd>@Html.DisplayFor(model => model.ZipCode)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Landlord.FirstName)</dt>
+            <dd>@Html.DisplayFor(model => model.Landlord.FirstName)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Manager.FirstName)</dt>
+            <dd>@Html.DisplayFor(model => model.Manager.FirstName)</dd>
+        </dl>
+    </div>
+
+    <div class="details-section">
+        <h4 class="section-title">Building Image</h4>
+        <hr class="section-divider" />
+        <div class="image-container">
+            <img src="@Url.Content($"/Content/images/building_{Model.BuildingCode}.jpeg")"
+                 alt="Building Image"
+                 class="building-image" />
+        </div>
+    </div>
+
+    <div class="action-links">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.BuildingCode }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Back to List", "Buildings", "Managers", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>
+
+
+<style>
+    /* General Page Styling */
+    .page-title {
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #2c3e50;
+    }
+
+    .details-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fdfdfd;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Section Styling */
+    .details-section {
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: #34495e;
+    }
+
+    .section-divider {
+        border: none;
+        border-top: 2px solid #ddd;
+        margin-bottom: 20px;
+    }
+
+    /* Definition List Styling */
+    .styled-dl dt {
+        font-weight: bold;
+        color: #555;
+        margin-bottom: 5px;
+    }
+
+    .styled-dl dd {
+        margin-bottom: 15px;
+        padding-left: 10px;
+        color: #333;
+    }
+
+    /* Image Styling */
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .building-image {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        object-fit: cover;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Action Links Styling */
+    .action-links {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 1em;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #fff;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary {
+        background-color: #3498db;
+    }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+    .btn-secondary {
+        background-color: #7f8c8d;
+    }
+
+        .btn-secondary:hover {
+            background-color: #636e72;
+        }
+</style>
+

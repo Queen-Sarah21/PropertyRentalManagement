@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Property Rental Managementn</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("Property Rental Management", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+                        string userType = Request.Cookies["UserType"].Value;
+                        if (userType == "Landlord")
+                        {
+
+                            <li>@Html.ActionLink("Managers", "Index", "Managers", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Tenants", "Index", "Tenants", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Messages", "ReceiveMessages", "Landlords", new { area = "" }, new { @class = "nav-link" })</li>
+                        }
+                        else if (userType == "Manager")
+                        {
+                            <li>@Html.ActionLink("Buildings", "Buildings", "Managers", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Apartments", "Apartments", "Managers", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Track Apartment Status", "ViewApartmentsByStatus", "Managers", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Report Events", "SendMessageToLandlord", "Managers", new { area = "" }, new { @class = "nav-link" })</li>
+
+                            <li>@Html.ActionLink("Schedule", "Index", "Schedules", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Messages", "ReceiveMessages", "Managers", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Appointments", "ViewAppointments", "Managers", new { area = "" }, new { @class = "nav-link" })</li>
+
+                        }
+                        else if (userType == "Tenant")
+                        {
+                            <li>@Html.ActionLink("Apartments", "Index", "Apartments", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Send Messages", "SendMessageToManager", "Tenants", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Messages", "ReceiveMessages", "Tenants", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Book an Appointment", "ViewSchedules", "Tenants", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("View Appointments", "ViewAppointments", "Tenants", new { area = "" }, new { @class = "nav-link" })</li>
+                        }
+
+                        <li>@Html.ActionLink("Logout", "Logout", "Accounts", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Guest", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Login", "Login", "Accounts", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Signup", "Signup", "Accounts", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Property Rental Management</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

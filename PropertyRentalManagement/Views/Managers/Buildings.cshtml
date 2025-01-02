@@ -1,0 +1,143 @@
+﻿@model IEnumerable<PropertyRentalManagement.Models.Building>
+
+@{
+    ViewBag.Title = "My Buildings";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+    }
+
+    .content-container {
+        max-width: 900px;
+        margin: 10px auto;
+        padding: 15px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #343a40;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+    .action-buttons a {
+        padding: 4px 8px;
+        margin: 0 4px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 0.85em;
+    }
+
+    .btn-edit {
+        background-color: #ffc107;
+        color: white;
+    }
+
+    .btn-details {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .action-buttons a:hover {
+        opacity: 0.9;
+    }
+
+    .create-new {
+        display: block;
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+        .create-new a {
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+            .create-new a:hover {
+                background-color: #0056b3;
+            }
+</style>
+
+<div class="content-container">
+    <h2>My Buildings</h2>
+
+    <div class="create-new">
+        @Html.ActionLink("Create New Building", "Create", "Buildings", new { managerId = User.Identity.Name }, new { @class = "btn btn-primary" })
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Building Code</th>
+                <th>Building Name</th>
+                <th>Description</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Province</th>
+                <th>Zip Code</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var building in Model)
+            {
+                <tr>
+                    <td>@building.BuildingCode</td>
+                    <td>@building.BuildingName</td>
+                    <td>@building.Description</td>
+                    <td>@building.Address</td>
+                    <td>@building.City</td>
+                    <td>@building.Province</td>
+                    <td>@building.ZipCode</td>
+                    <td class="action-buttons">
+                        @Html.ActionLink("Edit", "Edit", "Buildings", new { id = building.BuildingCode, managerId = User.Identity.Name }, new { @class = "btn-edit" })
+                        @Html.ActionLink("Details", "Details", "Buildings", new { id = building.BuildingCode, managerId = User.Identity.Name }, new { @class = "btn-details" })
+                        @Html.ActionLink("Delete", "Delete", "Buildings", new { id = building.BuildingCode, managerId = User.Identity.Name }, new { @class = "btn-delete" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

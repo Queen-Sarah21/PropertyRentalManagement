@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<main aria-labelledby="title">
+
+    <h4>Available Buildings With Appartments For Rental</h4>
+    <ul>
+        @foreach (var building in ViewBag.Buildings)
+        {
+            <li>
+                <strong>@building.BuildingName</strong> - @building.Description <br />
+                Address: @building.Address, @building.City, @building.Province, @building.ZipCode <br />
+                Managed by: @building.Manager.FirstName @building.Manager.LastName <br />
+                Landlord: @building.Landlord.FirstName @building.Landlord.LastName
+                <br />
+                <img src="@Url.Content($"/Content/images/building_{building.BuildingCode}.jpeg")"
+                     alt="Building Image" style="width: 300px; height: 200px; object-fit: cover; border: 1px solid #ccc;" />
+                <br /><br />
+            </li>
+        }
+    </ul>
+
+    <button onclick="showMessage()">View More</button>
+
+    <script>
+        function showMessage() {
+            // Alert message to inform the user that they need to be a member
+            alert("You need to be a member to view more details.");
+
+            // Redirect to the signup page
+            window.location.href = '@Url.Action("SignUp", "Accounts")';
+        }
+    </script>
+</main>

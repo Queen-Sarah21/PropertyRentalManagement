@@ -1,0 +1,124 @@
+﻿@model PropertyRentalManagement.Models.Tenant
+
+@{
+    ViewBag.Title = "Tenant Details";
+}
+
+<h2 class="text-center my-4">Tenant Details</h2>
+
+<div class="details-container">
+    <h4>Tenant Information</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+    </dl>
+</div>
+
+<div class="text-center mt-3">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.TenantId }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
+    </p>
+</div>
+
+<style>
+    h2 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .details-container {
+        max-width: 700px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h4 {
+        font-size: 24px;
+        color: #333;
+    }
+
+    .dl-horizontal dt {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .dl-horizontal dd {
+        font-size: 16px;
+        color: #777;
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 8px 18px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 15px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    .text-center {
+        text-align: center;
+    }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background-color: #ddd;
+        margin: 20px 0;
+    }
+</style>
+

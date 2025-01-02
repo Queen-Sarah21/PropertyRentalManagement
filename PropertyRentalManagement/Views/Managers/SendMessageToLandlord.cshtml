@@ -1,0 +1,36 @@
+﻿@model PropertyRentalManagement.Models.Message
+
+@{
+    ViewBag.Title = "Send Message to Landlord";
+}
+
+<h2>Send Message to Landlord</h2>
+
+@using (Html.BeginForm("SendMessageToLandlord", "Managers", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="ReceiverId">Landlord ID</label>
+        @Html.TextBoxFor(m => m.ReceiverId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ReceiverId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="MessageSubject">Subject</label>
+        @Html.TextBoxFor(m => m.MessageSubject, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="MessageBody">Message</label>
+        @Html.TextAreaFor(m => m.MessageBody, new { @class = "form-control", rows = 5, placeholder = "Enter your message here..." })
+        @Html.ValidationMessageFor(m => m.MessageBody, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.HiddenFor(m => m.SenderId)
+        @Html.HiddenFor(m => m.StatusId)
+
+        <input type="submit" value="Send Message" class="btn btn-primary" />
+    </div>
+}

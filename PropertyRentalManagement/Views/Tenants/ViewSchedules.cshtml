@@ -1,0 +1,30 @@
+﻿@model IEnumerable<PropertyRentalManagement.Models.Schedule>
+
+<h2>Schedules</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Manager Id</th>
+            <th>Manager Name</th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var schedule in Model)
+        {
+            <tr>
+                <td>@schedule.Manager.ManagerId</td>
+                <td>@schedule.Manager.FirstName</td>
+                <td>@schedule.ScheduleDate.ToShortDateString()</td>
+                <td>@schedule.StartTime</td>
+                <td>@schedule.EndTime</td>
+                <td>
+                    <a href="@Url.Action("Create", "Appointments", new { scheduleId = schedule.ScheduleId })" class="btn btn-primary">Book Appointment</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

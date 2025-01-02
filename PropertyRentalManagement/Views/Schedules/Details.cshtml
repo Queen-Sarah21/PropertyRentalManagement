@@ -1,0 +1,68 @@
+﻿@model PropertyRentalManagement.Models.Schedule
+
+@{
+    ViewBag.Title = "Schedule Details";
+}
+
+<h2 class="text-center text-primary my-4">Schedule Details</h2>
+
+<div class="container">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Schedule Information</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.ScheduleDate)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.ScheduleDate)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.StartTime)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.StartTime)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.EndTime)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.EndTime)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Manager.FirstName)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Manager.FirstName)
+                </dd>
+            </dl>
+
+            <div class="text-center">
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.ScheduleId }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        margin-top: 20px;
+    }
+
+    .dl-horizontal dt {
+        font-weight: bold;
+    }
+
+    .dl-horizontal dd {
+        margin-bottom: 10px;
+    }
+</style>
+
